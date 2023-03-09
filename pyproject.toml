@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "doltree-front-tests"
+version = "0.1.0"
+description = ""
+authors = ["Ant-h0ney <krot1326@gmail.com>"]
+readme = "README.md"
+packages = [{include = "doltree_front_tests"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^7.2.2"
+selene = "2.0.0b16"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
