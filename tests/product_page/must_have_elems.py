@@ -1,19 +1,19 @@
-from selene import be, have
 from selene.support.shared import browser
 
+from front.pages import product_page
 
-def test_search_line():
+
+def test_elems_on_page():
     browser.config.hold_browser_open = True
-
+    sku = '281486'
     # WHEN
-    browser.open('product/281486')
+    product_page.open(sku)
 
     # THEN
-    browser.element('.email-signup-body').wait_until(be.visible)
-    browser.element('.occ-sku').should(have.text('SKU: 281486'))
-    browser.element('.list-sale-price').should(be.visible)
-    browser.element('#cc-image-viewer .img-responsive').should(be.visible)
-    browser.element('.quantity-value').should(be.visible.and_(be.clickable))
-    browser.element('#Q-bopis-delivery-option').should(be.visible.and_(be.clickable))
-    browser.element('#C-bopis-delivery-option').should(be.visible.and_(be.clickable))
-    browser.element('#cc-prodDetails-addToCart').should(have.text('ADD TO CART'))
+    product_page.check_sku(sku)
+    product_page.have_sale_price()
+    product_page.have_product_image()
+    product_page.have_quantity_selector()
+    product_page.have_store_delivery()
+    product_page.have_home_delivery()
+    product_page.have_add_to_cart()
