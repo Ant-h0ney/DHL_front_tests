@@ -1,7 +1,7 @@
-from selene import be
+from selene import be, have
 from selene.support.shared import browser
 
-from front.elements import product_sku, add_to_cart
+from front.elements import wrapper
 
 
 def open(sku: str):  # NOQA
@@ -9,11 +9,15 @@ def open(sku: str):  # NOQA
 
 
 def check_sku(sku: str):
-    product_sku.check_having(sku)
+    wrapper.focus_presented('product-sku').element('.occ-sku').should(have.text(f'SKU: {sku}'))
 
 
-def have_sale_price():
+def have_each_price():
     browser.element('.list-sale-price').should(be.present)
+
+
+def have_total_price():
+    wrapper.focus_presented('total').element('.total-value').should(be.present)
 
 
 def have_product_image():
@@ -33,4 +37,6 @@ def have_home_delivery():
 
 
 def have_add_to_cart():
-    add_to_cart.check_having()
+    wrapper.focus_presented("add-to-cart").element("#cc-prodDetails-addToCart").should(
+        be.present.and_(have.text("ADD TO CART"))
+    )
