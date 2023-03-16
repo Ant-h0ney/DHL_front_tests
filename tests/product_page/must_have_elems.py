@@ -15,6 +15,6 @@ def test_elems_on_page():
     product_page.have_each_price()
     product_page.have_quantity_selector()
     product_page.have_total_price()
-    product_page.have_store_delivery()
-    product_page.have_home_delivery()
+    product_page.have_ship_to_store()
+    product_page.have_ship_to_home()
     product_page.have_add_to_cart()

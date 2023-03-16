@@ -7,3 +7,5 @@
 # IDE
 .idea
 
+# Allure reports
+allure-results/
