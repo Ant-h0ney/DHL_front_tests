@@ -1,8 +1,10 @@
 from selene.support.shared import browser
 
 from front.pages import product_page
+from tests.conftest import adaptive, web, web_and_adaptive
 
 
+@web_and_adaptive
 def test_elems_on_page():
     browser.config.hold_browser_open = True
     sku = '281486'
